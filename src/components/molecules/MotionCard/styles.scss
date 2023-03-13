@@ -1,0 +1,56 @@
+.card {
+  width: 100%;
+  position: relative;
+
+  &--trending {
+    min-width: 24rem;
+
+    @media screen and (min-width: 768px) {
+      min-width: 47rem;
+    }
+  }
+
+  &__imageContainer {
+    width: 100%;
+    position: relative;
+  }
+
+  &__caption {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.4rem;
+
+    &--trending {
+      position: absolute;
+      left: 1.6rem;
+      bottom: 1.6rem;
+
+      @media screen and (min-width: 768px) {
+        left: 2.4rem;
+        bottom: 2.4rem;
+      }
+    }
+  }
+
+  &__information {
+    display: flex;
+    list-style: disc;
+    column-gap: 1.5rem;
+    opacity: 0.75;
+  }
+
+  &__title {
+    font-size: var(--font-size-s);
+    font-weight: 500;
+
+    @media screen and (min-width: 768px) {
+      font-size: var(--font-size-m);
+    }
+
+    &--trending {
+      @media screen and (min-width: 768px) {
+        font-size: var(--font-size-l);
+      }
+    }
+  }
+}

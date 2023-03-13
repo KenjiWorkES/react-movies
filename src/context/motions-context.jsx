@@ -45,7 +45,7 @@ const MotionPictureContextProvider = ({ children }) => {
     return motionsArray;
   };
 
-  const { data } = useQuery('posts', fetchAllPosts);
+  const { data, isLoading, isError } = useQuery('posts', fetchAllPosts);
 
   const contextValue = {
     motions: data,
