@@ -41,4 +41,4 @@ const MotionCard = ({
   );
 };
 
-export default index;
+export default MotionCard;
