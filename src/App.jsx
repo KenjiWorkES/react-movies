@@ -1,4 +1,4 @@
-import useMotionsStore from './store/motions';
+import { useContext } from 'react';
 
 import './index.scss';
 import { Route, Routes } from 'react-router-dom';
@@ -8,10 +8,10 @@ import {
   FavoritesPage,
   TvShowsPage,
 } from '@/components/pages';
+import { MotionPictureContext } from './context/motions-context';
 
 const App = () => {
-  const motions = useMotionsStore((state) => state.motions);
-
+  const { motions } = useContext(MotionPictureContext);
   console.log(motions);
 
   return (
