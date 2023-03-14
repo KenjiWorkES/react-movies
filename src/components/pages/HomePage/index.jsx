@@ -3,6 +3,7 @@ import { MotionPictureContext } from '../../../context/motions-context';
 
 import React from 'react';
 import MotionGrid from '../../organisms/MotionGrid';
+import { Heading } from '../../atoms';
 
 const HomePage = () => {
   const [trendingData, setTrendingData] = useState([]);
@@ -22,7 +23,9 @@ const HomePage = () => {
 
   return (
     <>
+      <Heading text="Trending" />
       <MotionGrid motionPictures={trendingData} isTrending />
+      <Heading text="Recommended for you" />
       <MotionGrid motionPictures={motions} />
     </>
   );
