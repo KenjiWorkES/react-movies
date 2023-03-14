@@ -3,7 +3,7 @@ import { MotionPictureContext } from '../../../context/motions-context';
 
 import React from 'react';
 import MotionGrid from '../../organisms/MotionGrid';
-import { Heading, Loading } from '../../atoms';
+import { Heading, Loading, SearchInput } from '../../atoms';
 
 const HomePage = () => {
   const [trendingData, setTrendingData] = useState([]);
@@ -23,6 +23,7 @@ const HomePage = () => {
 
   return (
     <>
+      <SearchInput placeholder="Search for movies or TV series" />
       <Heading text="Trending" />
       <MotionGrid motionPictures={trendingData} isTrending />
       <Heading text="Recommended for you" />

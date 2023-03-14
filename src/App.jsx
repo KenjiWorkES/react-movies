@@ -12,7 +12,6 @@ import { MotionPictureContext } from './context/motions-context';
 
 const App = () => {
   const { motions } = useContext(MotionPictureContext);
-  console.log(motions);
 
   return (
     <Routes>

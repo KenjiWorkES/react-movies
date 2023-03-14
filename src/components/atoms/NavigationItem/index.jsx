@@ -15,8 +15,6 @@ const NavigationItem = ({ iconId, path }) => {
     }
   }, [location.pathname]);
 
-  console.log(location);
-
   const id = '#' + iconId;
 
   const classNames = ['header__icon', isActive && 'header__icon--active'].join(

@@ -3,8 +3,8 @@ import './styles.scss';
 
 const Loading = () => {
   return (
-    <section class="loading">
-      <div class="loading__spinner">
+    <section className="loading">
+      <div className="loading__spinner">
         <div></div>
         <div></div>
         <div></div>

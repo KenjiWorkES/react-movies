@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './styles.scss';
 
-const BookmarkButton = (initialState, onBookmark) => {
+const BookmarkButton = ({ initialState, onBookmark }) => {
   const [isActive, setIsActive] = useState(initialState);
 
   const onClickHandler = () => {
@@ -15,8 +15,8 @@ const BookmarkButton = (initialState, onBookmark) => {
   ].join(' ');
 
   return (
-    <button class="favorite" onClick={onClickHandler}>
-      <svg class={svgClasses}>
+    <button className="favorite" onClick={onClickHandler}>
+      <svg className={svgClasses}>
         <use href="#bookmark10" xlink-href="#bookmark" />
       </svg>
     </button>
