@@ -5,11 +5,11 @@ const SearchInput = ({ placeholder, onSubmit }) => {
   const [searchValue, setSearchValue] = useState('');
 
   const submitHandler = (event) => {
-    event.defaultValue();
-    onSubmit();
+    event.preventDefault();
+    onSubmit(searchValue);
   };
 
-  const handleHandler = (event) => {
+  const changeHandler = (event) => {
     setSearchValue(event.target.value);
   };
 
@@ -21,7 +21,7 @@ const SearchInput = ({ placeholder, onSubmit }) => {
         </svg>
       </button>
       <input
-        onChange={handleHandler}
+        onChange={changeHandler}
         className="search__input"
         aria-label="search input"
         type="text"
