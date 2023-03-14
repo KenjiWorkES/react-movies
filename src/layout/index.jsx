@@ -8,7 +8,7 @@ const Layout = ({ children }) => {
     <div className="layout">
       <Svg />
       <Header />
-      {children}
+      <main className="main">{children}</main>
     </div>
   );
 };

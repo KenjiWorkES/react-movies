@@ -6,6 +6,7 @@ import { getSingleMedia } from '../helpers/media';
 
 const defaultValue = {
   motions: [],
+  isLoading: null,
 };
 
 export const MotionPictureContext = createContext(defaultValue);
@@ -49,6 +50,7 @@ const MotionPictureContextProvider = ({ children }) => {
 
   const contextValue = {
     motions: data,
+    isLoading: isLoading,
   };
 
   return (
