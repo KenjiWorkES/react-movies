@@ -3,7 +3,7 @@ import { MotionPictureContext } from '../../../context/motions-context';
 
 import React from 'react';
 import MotionGrid from '../../organisms/MotionGrid';
-import { Heading } from '../../atoms';
+import { Heading, Loading } from '../../atoms';
 
 const HomePage = () => {
   const [trendingData, setTrendingData] = useState([]);
@@ -18,7 +18,7 @@ const HomePage = () => {
   }, [motions]);
 
   if (isLoading) {
-    return <h1>Loading</h1>;
+    return <Loading />;
   }
 
   return (
