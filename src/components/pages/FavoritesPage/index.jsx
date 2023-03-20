@@ -5,33 +5,33 @@ import { MotionPictureContext } from '../../../context/motions-context';
 import React from 'react';
 import MotionGrid from '../../organisms/MotionGrid';
 import { Heading, Loading, SearchInput } from '../../atoms';
+import { NotFound } from '../../molecules';
 
 const FavoritesPage = () => {
-  const [movieData, setMovieData] = useState([]);
-  const [seriesData, setSeriesData] = useState([]);
+  const [bookMarkedData, setBookMarkedData] = useState([]);
 
   const [title, setTitle] = useState('Bookmarked Movies');
   const { motions, isLoading } = useContext(MotionPictureContext);
 
   const { filteredMotions, searchHandler, alreadySearch } = useSearch(
-    motions,
+    bookMarkedData,
     title,
     setTitle
   );
 
   useEffect(() => {
     if (motions) {
-      const moviesMotions = motions.filter(
-        (motion) => motion.category === 'Movie' && motion.isBookmarked === true
-      );
-      const seriesMotions = motions.filter(
-        (motion) =>
-          motion.category === 'TV Series' && motion.isBookmarked === true
-      );
-      setSeriesData(seriesMotions);
-      setMovieData(moviesMotions);
+      const bookmarkedMotions = motions.filter((motion) => motion.isBookmarked);
+      setBookMarkedData(bookmarkedMotions);
     }
   }, [motions]);
+
+  const movieData = bookMarkedData.filter(
+    (motion) => motion.category === 'Movie'
+  );
+  const seriesData = bookMarkedData.filter(
+    (motion) => motion.category === 'TV Series'
+  );
 
   if (isLoading || !filteredMotions) {
     return <Loading />;
@@ -44,7 +44,8 @@ const FavoritesPage = () => {
         placeholder="Search for movies or TV series"
       />
       <Heading text={title} />
-      <MotionGrid motionPictures={movieData} />
+      {!alreadySearch && <MotionGrid motionPictures={movieData} />}
+      {alreadySearch && <MotionGrid motionPictures={filteredMotions} />}
       {!alreadySearch && (
         <>
           <Heading text="Bookmarked TV Series" />

@@ -1,3 +1,5 @@
+import { NotFound } from '../../molecules';
+
 import { useContext, useEffect, useState } from 'react';
 import useSearch from '../../../hooks/useSearch';
 import { MotionPictureContext } from '../../../context/motions-context';
