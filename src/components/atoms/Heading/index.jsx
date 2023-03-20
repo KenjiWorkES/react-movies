@@ -1,8 +1,8 @@
 import React from 'react';
 import './styles.scss';
 
-const Heading = ({ text }) => {
-  return <h2 className="heading">{text}</h2>;
+const Heading = ({ text, className }) => {
+  return <h2 className={`heading ${className}`}>{text}</h2>;
 };
 
 export default Heading;
