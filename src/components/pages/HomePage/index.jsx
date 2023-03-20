@@ -34,8 +34,12 @@ const HomePage = () => {
         onSubmit={searchHandler}
         placeholder="Search for movies or TV series"
       />
-      <Heading text="Trending" />
-      <MotionGrid motionPictures={trendingData} isTrending />
+      {!alreadySearch && (
+        <>
+          <Heading text="Trending" />
+          <MotionGrid motionPictures={trendingData} isTrending />
+        </>
+      )}
       <Heading text={title} />
       <MotionGrid motionPictures={filteredMotions} />
     </>

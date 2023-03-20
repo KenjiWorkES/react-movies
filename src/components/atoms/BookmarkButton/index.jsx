@@ -6,7 +6,7 @@ const BookmarkButton = ({ initialState, onBookmark }) => {
 
   const onClickHandler = () => {
     setIsActive((prevState) => !prevState);
-    onBookmark(isActive);
+    onBookmark(!isActive);
   };
 
   const svgClasses = [

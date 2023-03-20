@@ -19,8 +19,6 @@ const useSearch = (initialArray, sectionTitle, setSectionTitle) => {
       setSectionTitle(`Found ${motions.length} results for '${value}'`);
       setAlreadySearched(true);
     } else {
-      console.log('run');
-      console.log(defaultTitle);
       setFilteredMotions(initialArray);
       setSectionTitle(defaultTitle);
       setAlreadySearched(false);

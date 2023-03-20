@@ -1,4 +1,6 @@
-import React from 'react';
+import { MotionPictureContext } from '../../../context/motions-context';
+
+import React, { useContext } from 'react';
 import './styles.scss';
 import { MotionInfo, BookmarkButton, Image } from '../../atoms';
 
@@ -14,7 +16,11 @@ const MotionCard = ({
 }) => {
   const iconId = category === 'Movie' ? 'movies10' : 'tv10';
 
-  const onBookmarkCard = (value) => {};
+  const { bookmarkHandler } = useContext(MotionPictureContext);
+
+  const onBookmarkCard = (value) => {
+    bookmarkHandler(id, value);
+  };
 
   return (
     <figure className={`card ${isTrending && 'card--trending'}`}>

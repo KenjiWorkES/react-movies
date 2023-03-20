@@ -1,4 +1,4 @@
-import { createContext } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 import { getMotions } from '../helpers/posts';
@@ -7,6 +7,7 @@ import { getSingleMedia } from '../helpers/media';
 const defaultValue = {
   motions: [],
   isLoading: null,
+  bookmarkHandler: () => {},
 };
 
 export const MotionPictureContext = createContext(defaultValue);
@@ -48,9 +49,30 @@ const MotionPictureContextProvider = ({ children }) => {
 
   const { data, isLoading, isError } = useQuery('posts', fetchAllPosts);
 
+  const [motionPictures, setMotionPictures] = useState(data);
+
+  useEffect(() => {
+    setMotionPictures(data);
+  }, [data]);
+
+  const favoriteMotionHandler = (id, value) => {
+    console.log(id, value);
+    for (const motion of motionPictures) {
+      if (motion.id === id) {
+        const motionIndex = data.indexOf(motion);
+        const motionsAux = [...motionPictures];
+        motionsAux[motionIndex].isBookmarked = value;
+        console.log(motionsAux);
+        setMotionPictures(motionsAux);
+        break;
+      }
+    }
+  };
+
   const contextValue = {
-    motions: data,
+    motions: motionPictures,
     isLoading: isLoading,
+    bookmarkHandler: favoriteMotionHandler,
   };
 
   return (
