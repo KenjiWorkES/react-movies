@@ -1,12 +1,21 @@
 import { useContext, useEffect, useState } from 'react';
 import { MotionPictureContext } from '../../../context/motions-context';
 import MotionGrid from '../../organisms/MotionGrid';
-import { Heading, Loading } from '../../atoms';
+import { Heading, Loading, SearchInput } from '../../atoms';
+
+import useSearch from '../../../hooks/useSearch';
 
 const MoviesPage = () => {
+  const [title, setTitle] = useState('Movies');
   const [moviesData, setMoviesData] = useState([]);
 
   const { motions, isLoading } = useContext(MotionPictureContext);
+
+  const { filteredMotions, searchHandler, alreadySearch } = useSearch(
+    moviesData,
+    title,
+    setTitle
+  );
 
   useEffect(() => {
     if (motions) {
@@ -23,8 +32,9 @@ const MoviesPage = () => {
 
   return (
     <>
-      <Heading text="Movies" />
-      <MotionGrid motionPictures={moviesData} />
+      <SearchInput onSubmit={searchHandler} placeholder="Search for Movies" />
+      <Heading text={title} />
+      <MotionGrid motionPictures={filteredMotions} />
     </>
   );
 };
