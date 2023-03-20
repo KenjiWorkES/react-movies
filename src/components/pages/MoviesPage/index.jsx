@@ -1,3 +1,5 @@
+import { NotFound } from '../../molecules';
+
 import { useContext, useEffect, useState } from 'react';
 import { MotionPictureContext } from '../../../context/motions-context';
 import MotionGrid from '../../organisms/MotionGrid';
@@ -9,7 +11,7 @@ const MoviesPage = () => {
   const [title, setTitle] = useState('Movies');
   const [moviesData, setMoviesData] = useState([]);
 
-  const { motions, isLoading } = useContext(MotionPictureContext);
+  const { motions, isLoading, isError } = useContext(MotionPictureContext);
 
   const { filteredMotions, searchHandler, alreadySearch } = useSearch(
     moviesData,
@@ -28,6 +30,10 @@ const MoviesPage = () => {
 
   if (isLoading) {
     return <Loading />;
+  }
+
+  if (isError) {
+    return <NotFound text="Something went wrong. Please try again." />;
   }
 
   return (

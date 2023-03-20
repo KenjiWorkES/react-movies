@@ -1,3 +1,5 @@
+import { NotFound } from '../../molecules';
+
 import { useContext, useEffect, useState } from 'react';
 import useSearch from '../../../hooks/useSearch';
 import { MotionPictureContext } from '../../../context/motions-context';
@@ -5,13 +7,12 @@ import { MotionPictureContext } from '../../../context/motions-context';
 import React from 'react';
 import MotionGrid from '../../organisms/MotionGrid';
 import { Heading, Loading, SearchInput } from '../../atoms';
-import { NotFound } from '../../molecules';
 
 const FavoritesPage = () => {
   const [bookMarkedData, setBookMarkedData] = useState([]);
 
   const [title, setTitle] = useState('Bookmarked Movies');
-  const { motions, isLoading } = useContext(MotionPictureContext);
+  const { motions, isLoading, isError } = useContext(MotionPictureContext);
 
   const { filteredMotions, searchHandler, alreadySearch } = useSearch(
     bookMarkedData,
@@ -35,6 +36,10 @@ const FavoritesPage = () => {
 
   if (isLoading || !filteredMotions) {
     return <Loading />;
+  }
+
+  if (isError) {
+    return <NotFound text="Something went wrong. Please try again." />;
   }
 
   return (

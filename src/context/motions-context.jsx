@@ -7,6 +7,7 @@ import { getSingleMedia } from '../helpers/media';
 const defaultValue = {
   motions: [],
   isLoading: null,
+  isError: null,
   bookmarkHandler: () => {},
 };
 
@@ -72,6 +73,7 @@ const MotionPictureContextProvider = ({ children }) => {
   const contextValue = {
     motions: motionPictures,
     isLoading: isLoading,
+    isError: isError,
     bookmarkHandler: favoriteMotionHandler,
   };
 

@@ -11,7 +11,7 @@ import { Heading, Loading, SearchInput } from '../../atoms';
 const HomePage = () => {
   const [trendingData, setTrendingData] = useState([]);
   const [title, setTitle] = useState('Recommended for you');
-  const { motions, isLoading } = useContext(MotionPictureContext);
+  const { motions, isLoading, isError } = useContext(MotionPictureContext);
 
   const { filteredMotions, searchHandler, alreadySearch } = useSearch(
     motions,
@@ -28,6 +28,10 @@ const HomePage = () => {
 
   if (isLoading || !filteredMotions) {
     return <Loading />;
+  }
+
+  if (isError) {
+    return <NotFound text="Something went wrong. Please try again." />;
   }
 
   return (
